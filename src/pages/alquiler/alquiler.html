@@ -1,0 +1,37 @@
+<!--
+  Generated template for the AlquilerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Alquiler de Habitación</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only  (click)="AddAlquiler()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+      
+        <ion-item (click)="selectItem(alquiler)" *ngFor="let alquiler of AlquilerList | async" >
+           <ion-card padding>
+         <h2>{{alquiler.n_cuarto}}</h2>
+         <h3>{{alquiler.nombre_p}}</h3>
+         <ion-badge item-end  [color] = "alquiler.alquiler_estado == '1'?'danger':'hope'"> {{ alquiler.alquiler_estado === '1' ? 'Ocupado' : 'Terminado' }}</ion-badge>
+       </ion-card>
+       </ion-item>
+          
+   </ion-list>
+
+</ion-content>

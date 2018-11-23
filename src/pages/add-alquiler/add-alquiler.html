@@ -1,0 +1,62 @@
+<!--
+  Generated template for the AddAlquilerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuevo Alquiler</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Fecha Inicio:</ion-label>
+          <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="alquiler.fecha_ini"></ion-datetime>
+        </ion-item>    
+        <ion-item>
+          <ion-label floating>Fecha Salida</ion-label>
+          <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="alquiler.fecha_fin"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Inquilino</ion-label>
+            <ion-select [(ngModel)]="alquiler.id_persona" >
+            <ion-option *ngFor="let persona of PersonasList | async" (ionSelect)="onSelectChange($event,persona)" [value]="persona.$key" >{{persona.itemName}}</ion-option>
+            </ion-select>            
+          </ion-item>
+          <ion-input type="text" hidden  [(ngModel)]="alquiler.nombre_p" ></ion-input>    
+        <ion-item>
+             <ion-label floating>N° Habitacion</ion-label>
+             <ion-select [(ngModel)]="alquiler.id_habitacion">
+             <ion-option *ngFor="let cuarto of cuartoList | async" (ionSelect)="cuartoEvento($event,cuarto)" [value]="cuarto.$key">{{cuarto.numero}}</ion-option>
+             </ion-select>
+              </ion-item>
+              <ion-input type="number" hidden  [(ngModel)]="alquiler.n_cuarto" ></ion-input>    
+              <ion-item>
+                  <ion-label floating>Mensualidad S/:</ion-label>
+                  <ion-input type="number" [(ngModel)]="alquiler.pago_mensual"></ion-input>
+                </ion-item>        
+        <ion-item>
+           <ion-label floating>Contrato</ion-label>
+           <ion-select [(ngModel)]="alquiler.contrato">
+              <ion-option value="1">Entregado</ion-option>
+              <ion-option value="0">Sin Contrato</ion-option>
+         </ion-select>
+          </ion-item>
+         <ion-item>      
+           <ion-label floating>Estado</ion-label>
+           <ion-select [(ngModel)]="alquiler.alquiler_estado">
+               <ion-option value="1">Presente</ion-option>
+               <ion-option value="0">Terminado</ion-option>
+               <ion-option value="A">Anulado</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <button ion-button block color="hope" (click)="SaveAlquiler(alquiler)">Crear Contrato</button>
+
+</ion-content>

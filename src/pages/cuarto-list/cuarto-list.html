@@ -1,0 +1,36 @@
+<!--
+  Generated template for the CuartoListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Habitaciones</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only  (click)="AddCuarto()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+    <ion-list>
+      
+         <ion-item (click)="selectItem(cuarto)" *ngFor="let cuarto of itemsRef$ | async">
+            <ion-card padding>
+          <h2>{{cuarto.numero}}</h2>
+          <p>{{cuarto.descripcion}}</p>
+          <ion-badge item-end  [color] = "cuarto.estado == '1'?'hope':'danger'"> {{ cuarto.estado === '1' ? 'Activo' : 'Mantenimiento' }}</ion-badge>
+        </ion-card>
+        </ion-item>
+           
+    </ion-list>
+  </ion-content>

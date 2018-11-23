@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Residencia Cielo</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+   <ion-content padding id="cuerpo">
+   
+      <ion-img  style="width: 23.5em; height: 16em;padding-left:4.6em; " src='http://lacentralsevilla.com/wp-content/uploads/2014/03/residencia.png'></ion-img>
+     
+     
+  <ion-item>
+    <ion-label floating>Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <button ion-button block color="hope" (click)="login(user)">Login</button>
+  <button ion-button block color="light" (click)="register(user)">Register</button>
+
+  <p ion-text color="hope">{{error}}</p>
+
+</ion-content>
+ 
+
